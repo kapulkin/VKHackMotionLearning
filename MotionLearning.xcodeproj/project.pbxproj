@@ -14,7 +14,6 @@
 		11FD6F5722835A6B00775EAA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11FD6F5522835A6B00775EAA /* Main.storyboard */; };
 		11FD6F5922835A6B00775EAA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11FD6F5822835A6B00775EAA /* Assets.xcassets */; };
 		11FD6F5C22835A6B00775EAA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11FD6F5A22835A6B00775EAA /* LaunchScreen.storyboard */; };
-		718E55BA2289C30A00A9B13B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 718E55B92289C30A00A9B13B /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,7 +29,6 @@
 		11FD6F5D22835A6B00775EAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		11FD6F5E22835A6B00775EAA /* ARMatteExampleSwift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ARMatteExampleSwift-Bridging-Header.h"; sourceTree = "<group>"; };
 		25DCD09025DBDC7000000001 /* SampleCode.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = SampleCode.xcconfig; path = Configuration/SampleCode.xcconfig; sourceTree = "<group>"; };
-		718E55B92289C30A00A9B13B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		75E0906075E0961000000001 /* LICENSE.txt */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -48,7 +46,6 @@
 		11FD6F4022835A6B00775EAA = {
 			isa = PBXGroup;
 			children = (
-				718E55B92289C30A00A9B13B /* README.md */,
 				11FD6F4B22835A6B00775EAA /* MotionLearning */,
 				11FD6F4A22835A6B00775EAA /* Products */,
 				25DBE10025DBE0C000000001 /* Configuration */,
@@ -157,7 +154,6 @@
 			files = (
 				11FD6F5C22835A6B00775EAA /* LaunchScreen.storyboard in Resources */,
 				11FD6F5922835A6B00775EAA /* Assets.xcassets in Resources */,
-				718E55BA2289C30A00A9B13B /* README.md in Resources */,
 				11FD6F5722835A6B00775EAA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -323,13 +319,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8CKEB247XU;
+				DEVELOPMENT_TEAM = 4T8F8GY6S3;
 				INFOPLIST_FILE = MotionLearning/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.motionlearning.app;
+				PRODUCT_BUNDLE_IDENTIFIER = app.motionlearning;
 				PRODUCT_NAME = MotionLearning;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
@@ -346,13 +342,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8CKEB247XU;
+				DEVELOPMENT_TEAM = 4T8F8GY6S3;
 				INFOPLIST_FILE = MotionLearning/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.motionlearning.app;
+				PRODUCT_BUNDLE_IDENTIFIER = app.motionlearning;
 				PRODUCT_NAME = MotionLearning;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
