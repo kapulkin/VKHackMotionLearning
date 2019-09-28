@@ -16,7 +16,8 @@ class ViewController:
   ARSCNViewDelegate,
   RecordButtonDelegate,
   RPScreenRecorderDelegate,
-RPPreviewViewControllerDelegate {
+  RPPreviewViewControllerDelegate,
+  ARSessionDelegate {
   
   //MARK: - Outlets
   
@@ -90,9 +91,6 @@ RPPreviewViewControllerDelegate {
   
   // MARK: - ARSCNViewDelegate
   
-  func session(_ session: ARSession, didFailWithError error: Error) {
-  }
-  
   func sessionWasInterrupted(_ session: ARSession) {
   }
   
@@ -108,24 +106,23 @@ RPPreviewViewControllerDelegate {
   //MARK: - RecordButtonDelegate
   
   func tapButton(isRecording: Bool) {
-    
-    if !isRecording {
-      recorder.stopRecording { (preview, error) in
-        if let unwrappedPreview = preview {
-          unwrappedPreview.previewControllerDelegate = self
-          self.present(unwrappedPreview, animated: true)
-        }
-      }
-      print("Start recording")
-    } else {
-      print("Stop recording")
-      recorder.startRecording { error in
-        if let unwrappedError = error {
-          print(unwrappedError.localizedDescription)
+        if !isRecording {
+          recorder.stopRecording { (preview, error) in
+            if let unwrappedPreview = preview {
+              unwrappedPreview.previewControllerDelegate = self
+              self.present(unwrappedPreview, animated: true)
+            }
+          }
+          print("Start recording")
         } else {
+          print("Stop recording")
+          recorder.startRecording { error in
+            if let unwrappedError = error {
+              print(unwrappedError.localizedDescription)
+            } else {
+            }
+          }
         }
-      }
-    }
   }
   
   //MARK: - RPPreviewViewControllerDelegate
@@ -188,9 +185,32 @@ RPPreviewViewControllerDelegate {
     videoSpriteKitNode.yScale = -1.0
     videoSpriteKitNode.play()
     spriteKitScene.addChild(videoSpriteKitNode)
-    
     // Create the SceneKit scene
-    ball.firstMaterial?.diffuse.contents = spriteKitScene
+    ball.firstMaterial?.diffuse.contents = videoPlayer
     sceneView.pointOfView?.addChildNode(ballNode)
+    sceneView.session.delegate = self
+    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+      videoPlayer.play()
+    }
+  }
+  
+  //MARK: - ARSessionDelegate
+  func session(_ session: ARSession, didUpdate frame: ARFrame) {
+    ARScreenRecorder.shared.render(frame: frame)
+  }
+  
+  func session(_ session: ARSession, didFailWithError error: Error) {
+      guard error is ARError else { return }
+      
+      let errorWithInfo = error as NSError
+      let messages = [
+          errorWithInfo.localizedDescription,
+          errorWithInfo.localizedFailureReason,
+          errorWithInfo.localizedRecoverySuggestion
+      ]
+      
+      // Use `flatMap(_:)` to remove optional error messages.
+      let errorMessage = messages.flatMap({ $0 }).joined(separator: "\n")
+      print(errorMessage,  "errormessage")
   }
 }
