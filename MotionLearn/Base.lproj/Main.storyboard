@@ -42,6 +42,18 @@
                                     <constraint firstAttribute="width" constant="50" id="LM0-K5-ery"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h09-hn-rY5">
+                                <rect key="frame" x="20" y="20" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="UUr-1Z-SdZ"/>
+                                    <constraint firstAttribute="height" constant="30" id="qwM-W1-oiM"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="back-arrow"/>
+                                <connections>
+                                    <action selector="backAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="QCS-so-Nsa"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -50,7 +62,9 @@
                             <constraint firstItem="Rii-ke-rcb" firstAttribute="bottom" secondItem="T64-xj-mQd" secondAttribute="bottom" constant="40" id="Aca-nj-jit"/>
                             <constraint firstAttribute="bottom" secondItem="nAg-JO-C3R" secondAttribute="bottom" id="FE3-jY-LCE"/>
                             <constraint firstItem="T64-xj-mQd" firstAttribute="centerX" secondItem="Rii-ke-rcb" secondAttribute="centerX" id="K2Z-8Q-bqB"/>
+                            <constraint firstItem="h09-hn-rY5" firstAttribute="leading" secondItem="Rii-ke-rcb" secondAttribute="leading" constant="20" id="KHs-Ql-fEQ"/>
                             <constraint firstItem="nAg-JO-C3R" firstAttribute="top" secondItem="USj-dO-rga" secondAttribute="top" id="QsH-YD-KQv"/>
+                            <constraint firstItem="h09-hn-rY5" firstAttribute="top" secondItem="Rii-ke-rcb" secondAttribute="top" constant="20" id="lNl-by-rhg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Rii-ke-rcb"/>
                     </view>
@@ -64,4 +78,7 @@
             <point key="canvasLocation" x="138" y="119"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="back-arrow" width="512" height="512"/>
+    </resources>
 </document>

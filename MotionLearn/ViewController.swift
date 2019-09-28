@@ -89,9 +89,11 @@ class ViewController: UIViewController, ARSCNViewDelegate, RecordButtonDelegate,
       recorder = RPScreenRecorder.shared()
       recorder.delegate = self
     }
-  
-  @objc func record() {
-    
+ 
+  @IBAction func backAction(_ sender: Any) {
+    if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as? ChooseImgVC {
+      Router.switchRootVC(to: vc)
+    }
   }
   
   @IBAction func onRecord(_ sender: UIButton) {
