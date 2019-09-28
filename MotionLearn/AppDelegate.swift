@@ -1,9 +1,9 @@
 //
 //  AppDelegate.swift
-//  NextReality_Tutorial8
+//  MotionLearn
 //
-//  Created by Ambuj Punn on 9/25/18.
-//  Copyright © 2018 Ambuj Punn. All rights reserved.
+//  Created by Amahstla . on 28/09/2019.
+//  Copyright © 2019 VK. All rights reserved.
 //
 
 import UIKit
