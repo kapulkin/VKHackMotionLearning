@@ -42,8 +42,18 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Set the scene to the view
         sceneView.scene = scene
         
-        
-      let size = CGSize(width: 0.15, height: 0.15)
+      let screenSize = UIScreen.main.bounds.size
+      let imgSize = img?.size ?? CGSize(width: 1, height: 1)
+      var size = CGSize(width: 0.15, height: 0.15)
+      let screenRatio = screenSize.height / screenSize.width
+      let imgRatio = imgSize.height / imgSize.width
+      if (screenRatio > imgRatio) {
+        size = CGSize(width: size.width * screenRatio / imgRatio,
+                      height: size.height * screenRatio / imgRatio)
+      } else {
+        size = CGSize(width: size.width * imgRatio / screenRatio,
+                      height: size.height * imgRatio / screenRatio)
+      }
       let ball = SCNPlane(width: size.width, height: size.height)
       
       let ballNode = SCNNode(geometry: ball)
