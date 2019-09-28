@@ -27,7 +27,8 @@ class ViewController:
   //MARK: - Properties
   
   var recorder = RPScreenRecorder.shared()
-  var img: UIImage! = UIImage(named: "mona-lisa")
+  var img: UIImage?
+  var videoURL: URL?
   
   //MARK: - Memory
   
@@ -106,23 +107,23 @@ class ViewController:
   //MARK: - RecordButtonDelegate
   
   func tapButton(isRecording: Bool) {
-        if !isRecording {
-          recorder.stopRecording { (preview, error) in
-            if let unwrappedPreview = preview {
-              unwrappedPreview.previewControllerDelegate = self
-              self.present(unwrappedPreview, animated: true)
-            }
-          }
-          print("Start recording")
-        } else {
-          print("Stop recording")
-          recorder.startRecording { error in
-            if let unwrappedError = error {
-              print(unwrappedError.localizedDescription)
-            } else {
-            }
-          }
+    if !isRecording {
+      recorder.stopRecording { (preview, error) in
+        if let unwrappedPreview = preview {
+          unwrappedPreview.previewControllerDelegate = self
+          self.present(unwrappedPreview, animated: true)
         }
+      }
+      print("Start recording")
+    } else {
+      print("Stop recording")
+      recorder.startRecording { error in
+        if let unwrappedError = error {
+          print(unwrappedError.localizedDescription)
+        } else {
+        }
+      }
+    }
   }
   
   //MARK: - RPPreviewViewControllerDelegate
@@ -154,11 +155,11 @@ class ViewController:
     
     // Set the scene to the view
     sceneView.scene = scene
-    let size = img.sizeToFitScreen()
+    let size = img?.sizeToFitScreen() ?? CGSize(width: 1, height: 1)
     let ball = SCNPlane(width: size.width, height: size.height)
     
     let ballNode = SCNNode(geometry: ball)
-    ballNode.geometry?.firstMaterial?.diffuse.contents = img
+    
     ballNode.position = SCNVector3Make(0, 0, -0.2)
     
     
@@ -167,7 +168,7 @@ class ViewController:
     
     // Create a video player, which will be responsible for the playback of the video material
     let videoUrl = Bundle.main.url(forResource: "video", withExtension: "mp4")!
-    let videoPlayer = AVPlayer(url: videoUrl)
+    let videoPlayer = AVPlayer(url: self.videoURL ?? videoUrl)
     
     // To make the video loop
     videoPlayer.actionAtItemEnd = .none
@@ -186,7 +187,13 @@ class ViewController:
     videoSpriteKitNode.play()
     spriteKitScene.addChild(videoSpriteKitNode)
     // Create the SceneKit scene
-    ball.firstMaterial?.diffuse.contents = videoPlayer
+    if let img = img {
+      ballNode.geometry?.firstMaterial?.diffuse.contents = img
+    }else {
+      ballNode.geometry?.firstMaterial?.diffuse.contents = videoPlayer
+
+    }
+    
     sceneView.pointOfView?.addChildNode(ballNode)
     sceneView.session.delegate = self
     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
@@ -200,17 +207,17 @@ class ViewController:
   }
   
   func session(_ session: ARSession, didFailWithError error: Error) {
-      guard error is ARError else { return }
-      
-      let errorWithInfo = error as NSError
-      let messages = [
-          errorWithInfo.localizedDescription,
-          errorWithInfo.localizedFailureReason,
-          errorWithInfo.localizedRecoverySuggestion
-      ]
-      
-      // Use `flatMap(_:)` to remove optional error messages.
-      let errorMessage = messages.flatMap({ $0 }).joined(separator: "\n")
-      print(errorMessage,  "errormessage")
+    guard error is ARError else { return }
+    
+    let errorWithInfo = error as NSError
+    let messages = [
+      errorWithInfo.localizedDescription,
+      errorWithInfo.localizedFailureReason,
+      errorWithInfo.localizedRecoverySuggestion
+    ]
+    
+    // Use `flatMap(_:)` to remove optional error messages.
+    let errorMessage = messages.flatMap({ $0 }).joined(separator: "\n")
+    print(errorMessage,  "errormessage")
   }
 }

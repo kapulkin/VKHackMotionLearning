@@ -19,6 +19,7 @@
 		D8458F67233F8F220025D40F /* video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = D8458F66233F8F220025D40F /* video.mp4 */; };
 		D8458F69233F9EE90025D40F /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8458F68233F9EE90025D40F /* Calculator.swift */; };
 		D8C7119F233FB88E00D77D75 /* Recorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C7119E233FB88E00D77D75 /* Recorder.swift */; };
+		D8C711A1233FC65E00D77D75 /* AHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C711A0233FC65E00D77D75 /* AHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		D8458F66233F8F220025D40F /* video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = video.mp4; sourceTree = "<group>"; };
 		D8458F68233F9EE90025D40F /* Calculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Calculator.swift; path = emplate/Calculator.swift; sourceTree = "<group>"; };
 		D8C7119E233FB88E00D77D75 /* Recorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Recorder.swift; path = emplate/Recorder.swift; sourceTree = "<group>"; };
+		D8C711A0233FC65E00D77D75 /* AHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AHandler.swift; path = emplate/AHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				D8C7119E233FB88E00D77D75 /* Recorder.swift */,
+				D8C711A0233FC65E00D77D75 /* AHandler.swift */,
 				D8458F5C233F572B0025D40F /* ChooseImgVC.swift */,
 				D8458F68233F9EE90025D40F /* Calculator.swift */,
 				D8458F5E233F70660025D40F /* Router.swift */,
@@ -205,6 +208,7 @@
 			files = (
 				D8458F5F233F70660025D40F /* Router.swift in Sources */,
 				D8458F5B233F54D90025D40F /* ViewController.swift in Sources */,
+				D8C711A1233FC65E00D77D75 /* AHandler.swift in Sources */,
 				D8458F5D233F572C0025D40F /* ChooseImgVC.swift in Sources */,
 				D8C7119F233FB88E00D77D75 /* Recorder.swift in Sources */,
 				D8458F69233F9EE90025D40F /* Calculator.swift in Sources */,
