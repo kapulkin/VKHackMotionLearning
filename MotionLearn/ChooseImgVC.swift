@@ -25,38 +25,7 @@ class ChooseImgVC: UIViewController {
     }
   }
   
-  private func switchRootVC(to vc: UIViewController, withScale: Bool = true, animated: Bool = true) {
-         
-         let app: UIApplication = UIApplication.shared
-         guard let delegate = app.delegate,
-             let window = delegate.window! else {
-                 return
-         }
-         guard window.rootViewController != nil else {
-             window.rootViewController = vc
-             return
-         }
-         
-         let snapShot: UIView = window.snapshotView(afterScreenUpdates: true) ?? UIView()
-        
-         if animated {
-             vc.view.addSubview(snapShot)
-         }
-         
-         window.rootViewController?.dismiss(animated: false, completion: nil)
-         window.rootViewController = vc
-         
-         if animated {
-             UIView.animate(withDuration: 0.3, animations: {
-                 snapShot.layer.opacity = 0
-                 if withScale == true {
-                     snapShot.layer.transform = CATransform3DMakeScale(1.5, 1.5, 1.5)
-                 }
-             }) { (_) in
-                 snapShot.removeFromSuperview()
-             }
-         }
-     }
+
 }
 extension ChooseImgVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -67,8 +36,7 @@ extension ChooseImgVC: UIImagePickerControllerDelegate, UINavigationControllerDe
         if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "ViewController") as? ViewController,
           let img = info[UIImagePickerControllerOriginalImage] as? UIImage {
           vc.img = img
-//          self.present(vc, animated: true, completion: nil)
-          self.switchRootVC(to: vc)
+          Router.switchRootVC(to: vc)
         }
       }
     } else {
