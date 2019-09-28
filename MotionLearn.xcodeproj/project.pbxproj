@@ -11,13 +11,18 @@
 		6111B06D215AFDB20090CF58 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6111B06B215AFDB20090CF58 /* Main.storyboard */; };
 		6111B06F215AFDB50090CF58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6111B06E215AFDB50090CF58 /* Assets.xcassets */; };
 		6111B072215AFDB50090CF58 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6111B070215AFDB50090CF58 /* LaunchScreen.storyboard */; };
+		947AC28B7846B9715F17D165 /* Pods_MotionLearn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 586A373A2F6F1D8B488286B7 /* Pods_MotionLearn.framework */; };
 		D83539F0233F52E600AAD20F /* AppDelegate.swift in Resources */ = {isa = PBXBuildFile; fileRef = 6111B065215AFDB20090CF58 /* AppDelegate.swift */; };
 		D8458F5B233F54D90025D40F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8458F5A233F54D90025D40F /* ViewController.swift */; };
 		D8458F5D233F572C0025D40F /* ChooseImgVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8458F5C233F572B0025D40F /* ChooseImgVC.swift */; };
 		D8458F5F233F70660025D40F /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8458F5E233F70660025D40F /* Router.swift */; };
+		D8458F67233F8F220025D40F /* video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = D8458F66233F8F220025D40F /* video.mp4 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		41516E96BC9D617870E4FFC4 /* Pods-MotionLearn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MotionLearn.release.xcconfig"; path = "Target Support Files/Pods-MotionLearn/Pods-MotionLearn.release.xcconfig"; sourceTree = "<group>"; };
+		521C0C6BB7F27FC22A57A3CC /* Pods-MotionLearn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MotionLearn.debug.xcconfig"; path = "Target Support Files/Pods-MotionLearn/Pods-MotionLearn.debug.xcconfig"; sourceTree = "<group>"; };
+		586A373A2F6F1D8B488286B7 /* Pods_MotionLearn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MotionLearn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6111B062215AFDB20090CF58 /* Learning M.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Learning M.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6111B065215AFDB20090CF58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6111B06C215AFDB20090CF58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -27,6 +32,7 @@
 		D8458F5A233F54D90025D40F /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D8458F5C233F572B0025D40F /* ChooseImgVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseImgVC.swift; sourceTree = "<group>"; };
 		D8458F5E233F70660025D40F /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Router.swift; path = emplate/Router.swift; sourceTree = "<group>"; };
+		D8458F66233F8F220025D40F /* video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = video.mp4; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				947AC28B7846B9715F17D165 /* Pods_MotionLearn.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,8 +50,11 @@
 		6111B059215AFDB10090CF58 = {
 			isa = PBXGroup;
 			children = (
+				D8458F66233F8F220025D40F /* video.mp4 */,
 				6111B064215AFDB20090CF58 /* MotionLearn */,
 				6111B063215AFDB20090CF58 /* Products */,
+				7DD4CD48ABBDCF42477DC7BC /* Pods */,
+				EABD40876B01B2195C01B093 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,6 +81,23 @@
 			path = MotionLearn;
 			sourceTree = "<group>";
 		};
+		7DD4CD48ABBDCF42477DC7BC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				521C0C6BB7F27FC22A57A3CC /* Pods-MotionLearn.debug.xcconfig */,
+				41516E96BC9D617870E4FFC4 /* Pods-MotionLearn.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		EABD40876B01B2195C01B093 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				586A373A2F6F1D8B488286B7 /* Pods_MotionLearn.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -78,6 +105,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6111B076215AFDB50090CF58 /* Build configuration list for PBXNativeTarget "MotionLearn" */;
 			buildPhases = (
+				22FF069C18F7BE114D7D1031 /* [CP] Check Pods Manifest.lock */,
 				6111B05E215AFDB10090CF58 /* Sources */,
 				6111B05F215AFDB10090CF58 /* Frameworks */,
 				6111B060215AFDB10090CF58 /* Resources */,
@@ -129,6 +157,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8458F67233F8F220025D40F /* video.mp4 in Resources */,
 				D83539F0233F52E600AAD20F /* AppDelegate.swift in Resources */,
 				6111B072215AFDB50090CF58 /* LaunchScreen.storyboard in Resources */,
 				6111B06F215AFDB50090CF58 /* Assets.xcassets in Resources */,
@@ -137,6 +166,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		22FF069C18F7BE114D7D1031 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MotionLearn-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6111B05E215AFDB10090CF58 /* Sources */ = {
@@ -288,6 +342,7 @@
 		};
 		6111B077215AFDB50090CF58 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 521C0C6BB7F27FC22A57A3CC /* Pods-MotionLearn.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -306,6 +361,7 @@
 		};
 		6111B078215AFDB50090CF58 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 41516E96BC9D617870E4FFC4 /* Pods-MotionLearn.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

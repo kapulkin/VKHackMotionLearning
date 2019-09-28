@@ -1,0 +1,6 @@
+framework module Pods_MotionLearn {
+  umbrella header "Pods-MotionLearn-umbrella.h"
+
+  export *
+  module * { export * }
+}

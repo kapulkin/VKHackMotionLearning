@@ -27,12 +27,36 @@
         <scene sceneID="tXr-a1-R10">
             <objects>
                 <viewController storyboardIdentifier="ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BV1-FR-VrT" customClass="ViewController" customModule="Learning_M" customModuleProvider="target" sceneMemberID="viewController">
-                    <arscnView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="BrB-h1-WRS">
+                    <view key="view" contentMode="scaleToFill" id="USj-dO-rga">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </arscnView>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nAg-JO-C3R">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </arscnView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T64-xj-mQd" customClass="RecordButton" customModule="Learning_M" customModuleProvider="target">
+                                <rect key="frame" x="162.5" y="577" width="50" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Fwk-sZ-3br"/>
+                                    <constraint firstAttribute="width" constant="50" id="LM0-K5-ery"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Rii-ke-rcb" firstAttribute="trailing" secondItem="nAg-JO-C3R" secondAttribute="trailing" id="55T-AK-XKW"/>
+                            <constraint firstItem="nAg-JO-C3R" firstAttribute="leading" secondItem="Rii-ke-rcb" secondAttribute="leading" id="7lT-ER-GwH"/>
+                            <constraint firstItem="Rii-ke-rcb" firstAttribute="bottom" secondItem="T64-xj-mQd" secondAttribute="bottom" constant="40" id="Aca-nj-jit"/>
+                            <constraint firstAttribute="bottom" secondItem="nAg-JO-C3R" secondAttribute="bottom" id="FE3-jY-LCE"/>
+                            <constraint firstItem="T64-xj-mQd" firstAttribute="centerX" secondItem="Rii-ke-rcb" secondAttribute="centerX" id="K2Z-8Q-bqB"/>
+                            <constraint firstItem="nAg-JO-C3R" firstAttribute="top" secondItem="USj-dO-rga" secondAttribute="top" id="QsH-YD-KQv"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Rii-ke-rcb"/>
+                    </view>
                     <connections>
-                        <outlet property="sceneView" destination="BrB-h1-WRS" id="5nT-qQ-ynl"/>
+                        <outlet property="button" destination="T64-xj-mQd" id="k6z-ow-hnv"/>
+                        <outlet property="sceneView" destination="nAg-JO-C3R" id="cVL-j9-XbQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
