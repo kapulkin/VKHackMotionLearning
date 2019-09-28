@@ -13,7 +13,8 @@ import ARKit
 class ViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
-    
+  var img: UIImage!
+  
     override func viewDidLoad() {
         super.viewDidLoad()
 
