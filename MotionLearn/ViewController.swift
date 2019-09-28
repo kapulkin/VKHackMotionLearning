@@ -171,6 +171,8 @@ class ViewController:
         } else {
           size = CGSize(width: size.width / videoRatio, height: size.height)
         }
+        let scale = CGFloat(1.5)
+        size = CGSize(width: size.width * scale, height: size.height * scale)
     }
     
     // Create a new scene
@@ -190,6 +192,7 @@ class ViewController:
     let imagePlane = SCNPlane(width: size.width, height: size.height)
     let imagePlaneNode = SCNNode(geometry: imagePlane)
     imagePlaneNode.position = SCNVector3Make(0, 0, -0.2)
+    imagePlaneNode.localRotate(by: SCNQuaternion(x: 0, y: 0, z: 0.7071, w: 0.7071))
 
     // Create the SceneKit scene
     if let img = img {
