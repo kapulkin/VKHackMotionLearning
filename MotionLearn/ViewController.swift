@@ -155,7 +155,7 @@ class ViewController:
     
     // Set the scene to the view
     sceneView.scene = scene
-    let size = img?.sizeToFitScreen() ?? CGSize(width: 1, height: 1)
+    let size = img?.sizeToFitVideo() ?? CGSize(width: 1, height: 1)
     let ball = SCNPlane(width: size.width, height: size.height)
     
     let ballNode = SCNNode(geometry: ball)
