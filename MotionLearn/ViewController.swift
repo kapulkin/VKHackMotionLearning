@@ -128,7 +128,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, RecordButtonDelegate,
   @objc func record() {
     
   }
-  var isWriting: Bool = false
+  
   @IBAction func onRecord(_ sender: UIButton) {
       let recorder = RPScreenRecorder.shared()
 
@@ -152,34 +152,6 @@ class ViewController: UIViewController, ARSCNViewDelegate, RecordButtonDelegate,
               }
           }
       }
-//    if isWriting {
-//
-//      self.recorder?.finishWriting().onSuccess { [weak self] url in
-//        print("Recording Finished", url)
-//        DispatchQueue.global(qos: .background).async {
-//            if let urlData = NSData(contentsOf: url) {
-//                let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0];
-//                let filePath="\(documentsPath)/tempFile.mp4"
-//                DispatchQueue.main.async {
-//                    urlData.write(toFile: filePath, atomically: true)
-//                    PHPhotoLibrary.shared().performChanges({
-//                        PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: URL(fileURLWithPath: filePath))
-//                    }) { completed, error in
-//                        if completed {
-//                            print("Video is saved!")
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//
-//      }
-//
-//    }else {
-//      self.recorder?.startWriting().onSuccess {
-//             print("Recording Started")
-//           }
-//    }
   }
   override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -200,51 +172,19 @@ class ViewController: UIViewController, ARSCNViewDelegate, RecordButtonDelegate,
 
     // MARK: - ARSCNViewDelegate
     
-/*
-    // Override to create and configure nodes for anchors added to the view's session.
-    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
-        let node = SCNNode()
-     
-        return node
-    }
-*/
-    
     func session(_ session: ARSession, didFailWithError error: Error) {
-        // Present an error message to the user
-        
     }
     
     func sessionWasInterrupted(_ session: ARSession) {
-        // Inform the user that the session has been interrupted, for example, by presenting an overlay
-        
     }
     
     func sessionInterruptionEnded(_ session: ARSession) {
-        // Reset tracking and/or remove existing anchors if consistent tracking is required
-        
     }
-  var didAdded = false
     
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
-//        guard let planeAnchor = anchor as? , planeAnchor.alignment == .vertical else { return }
-//      guard !didAdded, let a = anchor as? ARPlaneAnchor else {return}
-//      didAdded = true
-//        let grid = Grid(anchor: a)
-//        self.grids.append(grid)
-//        node.addChildNode(grid)
     }
     
     func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
-//        guard let planeAnchor = anchor as? ARPlaneAnchor, planeAnchor.alignment == .vertical else { return }
-//        let grid = self.grids.filter { grid in
-//            return grid.anchor.identifier == planeAnchor.identifier
-//            }.first
-//
-//        guard let foundGrid = grid else {
-//            return
-//        }
-//
-//        foundGrid.update(anchor: planeAnchor)
     }
 }
 
