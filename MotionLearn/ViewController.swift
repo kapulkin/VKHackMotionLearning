@@ -85,45 +85,10 @@ class ViewController: UIViewController, ARSCNViewDelegate, RecordButtonDelegate,
       let ballNode = SCNNode(geometry: ball)
       ballNode.geometry?.firstMaterial?.diffuse.contents = img
       ballNode.position = SCNVector3Make(0, 0, -0.2)
-      
+      sceneView.pointOfView?.addChildNode(ballNode)
       recorder = RPScreenRecorder.shared()
       recorder.delegate = self
-      
-      // A SpriteKit scene to contain the SpriteKit video node
-      let spriteKitScene = SKScene(size: CGSize(width: sceneView.frame.width, height: sceneView.frame.height))
-      spriteKitScene.scaleMode = .aspectFit
-
-      // Create a video player, which will be responsible for the playback of the video material
-      let videoUrl = Bundle.main.url(forResource: "video", withExtension: "mp4")!
-      let videoPlayer = AVPlayer(url: videoUrl)
-
-      // To make the video loop
-      videoPlayer.actionAtItemEnd = .none
-      NotificationCenter.default.addObserver(
-          self,
-          selector: #selector(ViewController.playerItemDidReachEnd),
-          name: NSNotification.Name.AVPlayerItemDidPlayToEndTime,
-          object: videoPlayer.currentItem)
-
-      // Create the SpriteKit video node, containing the video player
-      let videoSpriteKitNode = SKVideoNode(avPlayer: videoPlayer)
-      videoSpriteKitNode.position = CGPoint(x: spriteKitScene.size.width / 2.0, y: spriteKitScene.size.height / 2.0)
-      videoSpriteKitNode.size = spriteKitScene.size
-      videoSpriteKitNode.yScale = -1.0
-      videoSpriteKitNode.play()
-      spriteKitScene.addChild(videoSpriteKitNode)
-
-      // Create the SceneKit scene
-      sceneView.isPlaying = true
-      ball.firstMaterial?.diffuse.contents = spriteKitScene
-      sceneView.pointOfView?.addChildNode(ballNode)
     }
-  
-  @objc func playerItemDidReachEnd(notification: NSNotification) {
-         if let playerItem: AVPlayerItem = notification.object as? AVPlayerItem {
-             playerItem.seek(to: kCMTimeZero)
-         }
-     }
   
   @objc func record() {
     
