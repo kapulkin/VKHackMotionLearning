@@ -60,6 +60,7 @@ class ViewController:
   
   @IBAction func onRecord(_ sender: UIButton) {
     let recorder = RPScreenRecorder.shared()
+    recorder.isMicrophoneEnabled = true
     
     if recorder.isRecording {
       sender.backgroundColor = .lightGray
@@ -71,7 +72,7 @@ class ViewController:
         }
       }
     } else {
-      recorder.startRecording { error in
+      recorder.startRecording(handler: { error in
         if let unwrappedError = error {
           print(unwrappedError.localizedDescription)
         } else {
@@ -79,7 +80,7 @@ class ViewController:
           sender.titleLabel?.text = "Stop record"
           print("record is started")
         }
-      }
+      })
     }
   }
     @objc func playerItemDidReachEnd(notification: NSNotification) {
@@ -146,12 +147,14 @@ class ViewController:
     sceneView.delegate = self
     
     // Show statistics such as fps and timing information
-    sceneView.showsStatistics = true
-    sceneView.debugOptions = ARSCNDebugOptions.showFeaturePoints
+//    sceneView.showsStatistics = true
+//    sceneView.debugOptions = ARSCNDebugOptions.showFeaturePoints
+    sceneView.debugOptions = []
     
     // Create a video player, which will be responsible for the playback of the video material
     let videoUrl = Bundle.main.url(forResource: "video", withExtension: "mp4")!
     let videoPlayer = AVPlayer(url: self.videoURL ?? videoUrl)
+    videoPlayer.isMuted = true
 
     var size = CGSize(width: 0.15, height: 0.15)
     if let img = img {
