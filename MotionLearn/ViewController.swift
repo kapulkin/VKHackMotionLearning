@@ -13,7 +13,8 @@ import ARKit
 class ViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
-  var img: UIImage!
+    
+    var img: UIImage! = UIImage(named: "mona-lisa")
   
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +47,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
       let ball = SCNPlane(width: size.width, height: size.height)
       
       let ballNode = SCNNode(geometry: ball)
-      ballNode.geometry?.firstMaterial?.diffuse.contents = UIImage(named: "mona-lisa")
+      ballNode.geometry?.firstMaterial?.diffuse.contents = img
 //      let fov = sceneView.pointOfView?.camera?.fieldOfView ?? 0.0
 //      print("fov = \(fov)")
 //      let a: CGFloat = CGFloat(tanf((GLKMathDegreesToRadians(Float(fov/2.0)))))
@@ -54,8 +55,17 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
       ballNode.position = SCNVector3Make(0, 0, -0.2)
       sceneView.pointOfView?.addChildNode(ballNode)
+      
+//      let button = UIButton()
+//      button.translatesAutoresizingMaskIntoConstraints = false
+//
+//      self.view.addSubview(button)
         
     }
+  
+  @objc func record() {
+    
+  }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
