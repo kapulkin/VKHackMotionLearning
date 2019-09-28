@@ -30,8 +30,11 @@ extension UIImage {
 
     func sizeToFitVideo() -> CGSize {
         let screenSize = UIScreen.main.bounds.size
-        let imgSize = self.size
-        var size = CGSize(width: 0.15, height: 0.15)
+        var imgSize = self.size
+//        if (imgSize.width > imgSize.height) {
+//            imgSize = CGSize(width: imgSize.height, height: imgSize.width)
+//        }
+        var size = CGSize(width: 0.15, height: 0.30)
         let screenRatio = screenSize.height / screenSize.width
         let imgRatio = imgSize.height / imgSize.width
         if (screenRatio > imgRatio) {

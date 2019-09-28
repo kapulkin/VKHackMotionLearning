@@ -82,55 +82,11 @@ class ViewController:
       }
     }
   }
-  
-    override func viewDidLoad() {
-        super.viewDidLoad()
-//      iv.image = img
-      button.delegate = self
-                // Create a session configuration
-                let configuration = ARWorldTrackingConfiguration()
-        //        configuration.planeDetection = .vertical
-              if #available(iOS 13.0, *) {
-                configuration.frameSemantics = .personSegmentation
-              } else {
-                // Fallback on earlier versions
-              }
-                // Run the view's session
-                sceneView.session.run(configuration)
-        // Set the view's delegate
-        sceneView.delegate = self
-        
-        // Show statistics such as fps and timing information
-        sceneView.showsStatistics = true
-        sceneView.debugOptions = ARSCNDebugOptions.showFeaturePoints
-        
-        // Create a new scene
-        let scene = SCNScene()
-
-        // Set the scene to the view
-        sceneView.scene = scene
-        
-      let screenSize = UIScreen.main.bounds.size
-      let imgSize = img?.size ?? CGSize(width: 1, height: 1)
-      var size = CGSize(width: 0.15, height: 0.15)
-      let screenRatio = screenSize.height / screenSize.width
-      let imgRatio = imgSize.height / imgSize.width
-      if (screenRatio > imgRatio) {
-        size = CGSize(width: size.width * screenRatio / imgRatio,
-                      height: size.height * screenRatio / imgRatio)
-      } else {
-        size = CGSize(width: size.width * imgRatio / screenRatio,
-                      height: size.height * imgRatio / screenRatio)
+    @objc func playerItemDidReachEnd(notification: NSNotification) {
+      if let playerItem: AVPlayerItem = notification.object as? AVPlayerItem {
+          playerItem.seek(to: kCMTimeZero)
       }
-      let ball = SCNPlane(width: size.width, height: size.height)
-      
-      let ballNode = SCNNode(geometry: ball)
-      ballNode.geometry?.firstMaterial?.diffuse.contents = img
-      ballNode.position = SCNVector3Make(0, 0, -0.2)
-      sceneView.pointOfView?.addChildNode(ballNode)
-      recorder = RPScreenRecorder.shared()
-      recorder.delegate = self
-    }
+  }
  
   @IBAction func backAction(_ sender: Any) {
     if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as? ChooseImgVC {
@@ -193,26 +149,36 @@ class ViewController:
     sceneView.showsStatistics = true
     sceneView.debugOptions = ARSCNDebugOptions.showFeaturePoints
     
+    // Create a video player, which will be responsible for the playback of the video material
+    let videoUrl = Bundle.main.url(forResource: "video", withExtension: "mp4")!
+    let videoPlayer = AVPlayer(url: self.videoURL ?? videoUrl)
+
+    var size = CGSize(width: 0.15, height: 0.15)
+    if let img = img {
+        size = img.sizeToFitVideo()
+    } else {
+        guard let videoTrack = videoPlayer.currentItem?.asset.tracks(withMediaType: AVMediaType.video).first else {
+            return
+        }
+        let videoSizeRaw = videoTrack.naturalSize.applying(videoTrack.preferredTransform)
+        let videoSize = CGSize(width: fabs(videoSizeRaw.width), height: fabs(videoSizeRaw.height))
+
+        let screenSize = UIScreen.main.bounds.size
+        let screenRatio = screenSize.height / screenSize.width
+        let videoRatio = videoSize.height / videoSize.width
+        if (screenRatio > videoRatio) {
+          size = CGSize(width: size.width, height: size.height * videoRatio)
+        } else {
+          size = CGSize(width: size.width / videoRatio, height: size.height)
+        }
+    }
+    
     // Create a new scene
     let scene = SCNScene()
     
     // Set the scene to the view
     sceneView.scene = scene
-    let size = img?.sizeToFitVideo() ?? CGSize(width: 1, height: 1)
-    let ball = SCNPlane(width: size.width, height: size.height)
-    
-    let ballNode = SCNNode(geometry: ball)
-    
-    ballNode.position = SCNVector3Make(0, 0, -0.2)
-    
-    
-    let spriteKitScene = SKScene(size: CGSize(width: sceneView.frame.width, height: sceneView.frame.height))
-    spriteKitScene.scaleMode = .aspectFit
-    
-    // Create a video player, which will be responsible for the playback of the video material
-    let videoUrl = Bundle.main.url(forResource: "video", withExtension: "mp4")!
-    let videoPlayer = AVPlayer(url: self.videoURL ?? videoUrl)
-    
+            
     // To make the video loop
     videoPlayer.actionAtItemEnd = .none
     NotificationCenter.default.addObserver(
@@ -220,24 +186,27 @@ class ViewController:
       selector: #selector(ViewController.playerItemDidReachEnd),
       name: NSNotification.Name.AVPlayerItemDidPlayToEndTime,
       object: videoPlayer.currentItem)
-    
-    // Create the SpriteKit video node, containing the video player
-    let videoSpriteKitNode = SKVideoNode(avPlayer: videoPlayer)
-    videoSpriteKitNode.position = CGPoint(x: spriteKitScene.size.width / 2.0,
-                                          y: spriteKitScene.size.height / 2.0)
-    videoSpriteKitNode.size = spriteKitScene.size
-    videoSpriteKitNode.yScale = -1.0
-    videoSpriteKitNode.play()
-    spriteKitScene.addChild(videoSpriteKitNode)
+
+    let imagePlane = SCNPlane(width: size.width, height: size.height)
+    let imagePlaneNode = SCNNode(geometry: imagePlane)
+    imagePlaneNode.position = SCNVector3Make(0, 0, -0.2)
+
     // Create the SceneKit scene
     if let img = img {
-      ballNode.geometry?.firstMaterial?.diffuse.contents = img
-    }else {
-      ballNode.geometry?.firstMaterial?.diffuse.contents = videoPlayer
+      imagePlaneNode.geometry?.firstMaterial?.diffuse.contents = img
+    } else {
+      imagePlaneNode.geometry?.firstMaterial?.diffuse.contents = videoPlayer
 
     }
     
-    sceneView.pointOfView?.addChildNode(ballNode)
+    sceneView.pointOfView?.addChildNode(imagePlaneNode)
+    
+    let backPlane = SCNPlane(width: 1, height: 1)
+    let backPlaneNode = SCNNode(geometry: backPlane)
+    backPlaneNode.position = SCNVector3Make(0, 0, -0.3)
+    backPlaneNode.geometry?.firstMaterial?.diffuse.contents = UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1.0)
+    sceneView.pointOfView?.addChildNode(backPlaneNode)
+    
     sceneView.session.delegate = self
     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
       videoPlayer.play()

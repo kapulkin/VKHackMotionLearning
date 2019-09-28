@@ -52,7 +52,10 @@ self.authorisationStatus(attachmentTypeEnum: .video, vc: self.currentVC!)
         actionSheet.addAction(UIAlertAction(title: Constants.cancelBtnTitle, style: .cancel, handler: nil))
         
       if let topVC = findTopViewController() {
-        topVC.present(actionSheet, animated: true, completion: nil)
+        DispatchQueue.main.async {
+            topVC.present(actionSheet, animated: true, completion: nil)
+        }
+        
       }
     }
   
