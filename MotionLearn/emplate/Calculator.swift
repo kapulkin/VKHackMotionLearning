@@ -34,7 +34,7 @@ extension UIImage {
 //        if (imgSize.width > imgSize.height) {
 //            imgSize = CGSize(width: imgSize.height, height: imgSize.width)
 //        }
-        var size = CGSize(width: 0.15, height: 0.30)
+        var size = CGSize(width: 0.125, height: 0.125)
         let screenRatio = screenSize.height / screenSize.width
         let imgRatio = imgSize.height / imgSize.width
         if (screenRatio > imgRatio) {

@@ -132,26 +132,41 @@ class ViewController:
     let videoPlayer = AVPlayer(url: self.videoURL ?? videoUrl)
     videoPlayer.isMuted = true
 
-    var size = CGSize(width: 0.15, height: 0.15)
+    var size = CGSize(width: 0.125, height: 0.125)
+    var rotateImagePlane = false
     if let img = img {
         size = img.sizeToFitVideo()
     } else {
         guard let videoTrack = videoPlayer.currentItem?.asset.tracks(withMediaType: AVMediaType.video).first else {
             return
         }
-        let videoSizeRaw = videoTrack.naturalSize.applying(videoTrack.preferredTransform)
-        let videoSize = CGSize(width: fabs(videoSizeRaw.width), height: fabs(videoSizeRaw.height))
-
         let screenSize = UIScreen.main.bounds.size
         let screenRatio = screenSize.height / screenSize.width
+
+        let videoSizeRaw = videoTrack.naturalSize.applying(videoTrack.preferredTransform)
+        let videoSize = CGSize(width: fabs(videoSizeRaw.width), height: fabs(videoSizeRaw.height))
         let videoRatio = videoSize.height / videoSize.width
-        if (screenRatio > videoRatio) {
-          size = CGSize(width: size.width, height: size.height * videoRatio)
-        } else {
-          size = CGSize(width: size.width / videoRatio, height: size.height)
+
+        if (videoSize.width > videoSize.height) {
+            rotateImagePlane = true
         }
-        let scale = CGFloat(1.5)
-        size = CGSize(width: size.width * scale, height: size.height * scale)
+
+        if (screenRatio > videoRatio) {
+            if (!rotateImagePlane) {
+                size = CGSize(width: size.width, height: size.height * videoRatio)
+            } else {
+                size = CGSize(width: size.width / videoRatio, height: size.height)
+            }
+        } else {
+            if (!rotateImagePlane) {
+                size = CGSize(width: size.width * screenRatio / videoRatio, height: size.height * screenRatio)
+            } else {
+                size = CGSize(width: size.width * screenRatio, height: size.height * screenRatio * videoRatio)
+            }
+          size = CGSize(width: size.width / videoRatio, height: size.height)
+        }        
+//        let scale = CGFloat(1.5)
+//        size = CGSize(width: size.width * scale, height: size.height * scale)
     }
     
     // Create a new scene
@@ -171,14 +186,15 @@ class ViewController:
     let imagePlane = SCNPlane(width: size.width, height: size.height)
     let imagePlaneNode = SCNNode(geometry: imagePlane)
     imagePlaneNode.position = SCNVector3Make(0, 0, -0.2)
-    imagePlaneNode.localRotate(by: SCNQuaternion(x: 0, y: 0, z: 0.7071, w: 0.7071))
+    if (rotateImagePlane) {
+        imagePlaneNode.localRotate(by: SCNQuaternion(x: 0, y: 0, z: 0.7071, w: 0.7071))
+    }
 
     // Create the SceneKit scene
     if let img = img {
       imagePlaneNode.geometry?.firstMaterial?.diffuse.contents = img
     } else {
       imagePlaneNode.geometry?.firstMaterial?.diffuse.contents = videoPlayer
-
     }
     
     sceneView.pointOfView?.addChildNode(imagePlaneNode)
