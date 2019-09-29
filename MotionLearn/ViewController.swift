@@ -36,6 +36,7 @@ class ViewController:
     super.viewDidLoad()
     button.delegate = self
     recorder.delegate = self
+    recorder.isMicrophoneEnabled = true
     configureSCNView()
   }
   
@@ -58,31 +59,6 @@ class ViewController:
   
   //MARK: - Actions
   
-  @IBAction func onRecord(_ sender: UIButton) {
-    let recorder = RPScreenRecorder.shared()
-    recorder.isMicrophoneEnabled = true
-    
-    if recorder.isRecording {
-      sender.backgroundColor = .lightGray
-      sender.titleLabel?.text = "Start record"
-      recorder.stopRecording { (preview, error) in
-        if let unwrappedPreview = preview {
-          unwrappedPreview.previewControllerDelegate = self
-          self.present(unwrappedPreview, animated: true)
-        }
-      }
-    } else {
-      recorder.startRecording(handler: { error in
-        if let unwrappedError = error {
-          print(unwrappedError.localizedDescription)
-        } else {
-          sender.backgroundColor = .red
-          sender.titleLabel?.text = "Stop record"
-          print("record is started")
-        }
-      })
-    }
-  }
     @objc func playerItemDidReachEnd(notification: NSNotification) {
       if let playerItem: AVPlayerItem = notification.object as? AVPlayerItem {
           playerItem.seek(to: kCMTimeZero)
