@@ -86,13 +86,11 @@ protocol RecordButtonDelegate: class {
   
   override public init(frame: CGRect) {
     super.init(frame: frame)
-    NotificationCenter.default.addObserver(self, selector: #selector(tapped), name: Notification.Name(rawValue: "AVSystemController_SystemVolumeDidChangeNotification"), object: nil)
     self.backgroundColor = UIColor.clear
   }
   
   required public init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
-    NotificationCenter.default.addObserver(self, selector: #selector(tapped), name: Notification.Name(rawValue: "AVSystemController_SystemVolumeDidChangeNotification"), object: nil)
     self.backgroundColor = UIColor.clear
   }
   
@@ -170,15 +168,7 @@ protocol RecordButtonDelegate: class {
     delegate?.tapButton(isRecording: isRecording)
     
   }
-  
-  @objc func tapped() {
-    self.roundView?.layer.add(self.recordButtonAnimation(), forKey: "")
-    
-    isRecording = !isRecording
-    delegate?.tapButton(isRecording: isRecording)
-  }
-  
-  
+
   override open func prepareForInterfaceBuilder() {
     self.backgroundColor = UIColor.clear
     setupRecordButtonView()
