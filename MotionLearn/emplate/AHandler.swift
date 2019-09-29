@@ -54,7 +54,6 @@ class AttachmentHandler: NSObject{
     if let topVC = findTopViewController() {
       DispatchQueue.main.async {
         topVC.present(actionSheet, animated: true, completion: nil)
-//        topVC.show
       }
     }
   }
@@ -124,6 +123,8 @@ class AttachmentHandler: NSObject{
       let myPickerController = UIImagePickerController()
       myPickerController.delegate = self
       myPickerController.sourceType = .camera
+      myPickerController.modalPresentationStyle = .fullScreen
+      
       currentVC?.present(myPickerController, animated: true, completion: nil)
     }
   }
@@ -133,6 +134,7 @@ class AttachmentHandler: NSObject{
       let myPickerController = UIImagePickerController()
       myPickerController.delegate = self
       myPickerController.sourceType = .photoLibrary
+      myPickerController.modalPresentationStyle = .fullScreen
       currentVC?.present(myPickerController, animated: true, completion: nil)
     }
   }
@@ -143,6 +145,7 @@ class AttachmentHandler: NSObject{
       myPickerController.delegate = self
       myPickerController.sourceType = .photoLibrary
       myPickerController.mediaTypes = [kUTTypeMovie as String, kUTTypeVideo as String]
+      myPickerController.modalPresentationStyle = .fullScreen
       currentVC?.present(myPickerController, animated: true, completion: nil)
     }
   }
@@ -261,4 +264,3 @@ extension AttachmentHandler: UIDocumentMenuDelegate, UIDocumentPickerDelegate{
     currentVC?.dismiss(animated: true, completion: nil)
   }
 }
-
