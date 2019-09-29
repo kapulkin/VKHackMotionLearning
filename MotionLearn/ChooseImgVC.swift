@@ -32,25 +32,17 @@ class ChooseImgVC: UIViewController {
       /* get your compressed video url here */
     }
     
-    //    var imagePicker = UIImagePickerController()
-    //
-    //    if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
-    //        print("Button capture")
-    //
-    //        imagePicker.delegate = self
-    //        imagePicker.sourceType = .savedPhotosAlbum
-    //        imagePicker.allowsEditing = false
-    //        imagePicker.mediaTypes = [kUTTypeMovie as String, kUTTypeVideo as String]
-    //        present(imagePicker, animated: true, completion: nil)
-    //    }
+
   }
+  
+  var isAppeared = false
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    
   }
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
-    
+    guard !isAppeared else {return}
+    isAppeared.toggle()
     AttachmentHandler.shared.showAttachmentActionSheet(vc: self)
   }
 }

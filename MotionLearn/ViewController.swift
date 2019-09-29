@@ -125,7 +125,7 @@ class ViewController:
     // Show statistics such as fps and timing information
 //    sceneView.showsStatistics = true
 //    sceneView.debugOptions = ARSCNDebugOptions.showFeaturePoints
-    sceneView.debugOptions = []
+//    sceneView.debugOptions = []
     
     // Create a video player, which will be responsible for the playback of the video material
     let videoUrl = Bundle.main.url(forResource: "video", withExtension: "mp4")!
