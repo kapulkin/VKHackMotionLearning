@@ -66,7 +66,7 @@ class ViewController:
   }
  
   @IBAction func backAction(_ sender: Any) {
-    if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as? ChooseImgVC {
+    if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "ChooseImgVC") as? ChooseImgVC {
       Router.switchRootVC(to: vc)
     }
   }

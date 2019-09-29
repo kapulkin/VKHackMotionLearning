@@ -40,9 +40,9 @@ class AttachmentHandler: NSObject{
   func showAttachmentActionSheet(vc: UIViewController) {
     currentVC = vc
     let actionSheet = UIAlertController(title: Constants.actionFileTypeHeading, message: Constants.actionFileTypeDescription, preferredStyle: .alert)
-    actionSheet.addAction(UIAlertAction(title: Constants.camera, style: .default, handler: { (action) -> Void in
-      self.authorisationStatus(attachmentTypeEnum: .camera, vc: self.currentVC!)
-    }))
+//    actionSheet.addAction(UIAlertAction(title: Constants.camera, style: .default, handler: { (action) -> Void in
+//      self.authorisationStatus(attachmentTypeEnum: .camera, vc: self.currentVC!)
+//    }))
     actionSheet.addAction(UIAlertAction(title: Constants.phoneLibrary, style: .default, handler: { (action) -> Void in
       self.authorisationStatus(attachmentTypeEnum: .photoLibrary, vc: self.currentVC!)
     }))
