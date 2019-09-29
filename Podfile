@@ -8,6 +8,6 @@ target 'MotionLearn' do
   # Pods for MotionLearn
 
 
-
+pod 'JPSVolumeButtonHandler'
 
 end

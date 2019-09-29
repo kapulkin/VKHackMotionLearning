@@ -4,12 +4,19 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-MotionLearn.xcscheme</key>
+		<key>JPSVolumeButtonHandler.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+		<key>Pods-MotionLearn.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>1</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
