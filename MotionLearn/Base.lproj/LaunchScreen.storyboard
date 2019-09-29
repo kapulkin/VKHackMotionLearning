@@ -16,8 +16,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch" translatesAutoresizingMaskIntoConstraints="NO" id="Uve-OT-D5Z">
-                                <rect key="frame" x="0.0" y="-44" width="320" height="663"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch" translatesAutoresizingMaskIntoConstraints="NO" id="Uve-OT-D5Z">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="RA3-Os-Icw">
                                 <rect key="frame" x="175" y="503" width="130" height="50"/>
@@ -32,8 +32,8 @@
                             <constraint firstItem="Uve-OT-D5Z" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="3KN-Rv-91D"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="RA3-Os-Icw" secondAttribute="bottom" constant="15" id="DIS-nl-X1A"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="RA3-Os-Icw" secondAttribute="trailing" constant="15" id="HAY-LQ-Wti"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="Uve-OT-D5Z" secondAttribute="top" constant="44" id="JvI-Sy-mw1"/>
-                            <constraint firstItem="Uve-OT-D5Z" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="51" id="lqd-vU-PzL"/>
+                            <constraint firstAttribute="top" secondItem="Uve-OT-D5Z" secondAttribute="top" id="JvI-Sy-mw1"/>
+                            <constraint firstItem="Uve-OT-D5Z" firstAttribute="bottom" secondItem="Ze5-6b-2t3" secondAttribute="bottom" id="lqd-vU-PzL"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Uve-OT-D5Z" secondAttribute="trailing" id="ola-rI-uxf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
