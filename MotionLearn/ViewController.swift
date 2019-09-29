@@ -36,6 +36,7 @@ class ViewController:
     super.viewDidLoad()
     button.delegate = self
     recorder.delegate = self
+    recorder.isMicrophoneEnabled = true
     configureSCNView()
   }
   
@@ -58,30 +59,6 @@ class ViewController:
   
   //MARK: - Actions
   
-  @IBAction func onRecord(_ sender: UIButton) {
-    let recorder = RPScreenRecorder.shared()
-    
-    if recorder.isRecording {
-      sender.backgroundColor = .lightGray
-      sender.titleLabel?.text = "Start record"
-      recorder.stopRecording { (preview, error) in
-        if let unwrappedPreview = preview {
-          unwrappedPreview.previewControllerDelegate = self
-          self.present(unwrappedPreview, animated: true)
-        }
-      }
-    } else {
-      recorder.startRecording { error in
-        if let unwrappedError = error {
-          print(unwrappedError.localizedDescription)
-        } else {
-          sender.backgroundColor = .red
-          sender.titleLabel?.text = "Stop record"
-          print("record is started")
-        }
-      }
-    }
-  }
     @objc func playerItemDidReachEnd(notification: NSNotification) {
       if let playerItem: AVPlayerItem = notification.object as? AVPlayerItem {
           playerItem.seek(to: kCMTimeZero)
@@ -146,12 +123,14 @@ class ViewController:
     sceneView.delegate = self
     
     // Show statistics such as fps and timing information
-    sceneView.showsStatistics = true
-    sceneView.debugOptions = ARSCNDebugOptions.showFeaturePoints
+//    sceneView.showsStatistics = true
+//    sceneView.debugOptions = ARSCNDebugOptions.showFeaturePoints
+    sceneView.debugOptions = []
     
     // Create a video player, which will be responsible for the playback of the video material
     let videoUrl = Bundle.main.url(forResource: "video", withExtension: "mp4")!
     let videoPlayer = AVPlayer(url: self.videoURL ?? videoUrl)
+    videoPlayer.isMuted = true
 
     var size = CGSize(width: 0.15, height: 0.15)
     if let img = img {
