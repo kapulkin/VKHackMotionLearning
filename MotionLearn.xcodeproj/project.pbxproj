@@ -12,6 +12,7 @@
 		6111B06F215AFDB50090CF58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6111B06E215AFDB50090CF58 /* Assets.xcassets */; };
 		6111B072215AFDB50090CF58 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6111B070215AFDB50090CF58 /* LaunchScreen.storyboard */; };
 		947AC28B7846B9715F17D165 /* Pods_MotionLearn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 586A373A2F6F1D8B488286B7 /* Pods_MotionLearn.framework */; };
+		CEFA98DC23F1F89900104ECF /* BlockVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFA98DB23F1F89900104ECF /* BlockVC.swift */; };
 		D83539F0233F52E600AAD20F /* AppDelegate.swift in Resources */ = {isa = PBXBuildFile; fileRef = 6111B065215AFDB20090CF58 /* AppDelegate.swift */; };
 		D842604B23408BF8001960FB /* LaunchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D842604A23408BF8001960FB /* LaunchVC.swift */; };
 		D8458F5B233F54D90025D40F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8458F5A233F54D90025D40F /* ViewController.swift */; };
@@ -33,6 +34,7 @@
 		6111B06E215AFDB50090CF58 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6111B071215AFDB50090CF58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6111B073215AFDB50090CF58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CEFA98DB23F1F89900104ECF /* BlockVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockVC.swift; sourceTree = "<group>"; };
 		D842604A23408BF8001960FB /* LaunchVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LaunchVC.swift; path = emplate/LaunchVC.swift; sourceTree = "<group>"; };
 		D8458F5A233F54D90025D40F /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D8458F5C233F572B0025D40F /* ChooseImgVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseImgVC.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				6111B06E215AFDB50090CF58 /* Assets.xcassets */,
 				6111B070215AFDB50090CF58 /* LaunchScreen.storyboard */,
 				6111B073215AFDB50090CF58 /* Info.plist */,
+				CEFA98DB23F1F89900104ECF /* BlockVC.swift */,
 			);
 			path = MotionLearn;
 			sourceTree = "<group>";
@@ -214,6 +217,7 @@
 				D8C711A1233FC65E00D77D75 /* AHandler.swift in Sources */,
 				D8458F5D233F572C0025D40F /* ChooseImgVC.swift in Sources */,
 				D8C7119F233FB88E00D77D75 /* Recorder.swift in Sources */,
+				CEFA98DC23F1F89900104ECF /* BlockVC.swift in Sources */,
 				D842604B23408BF8001960FB /* LaunchVC.swift in Sources */,
 				D8458F69233F9EE90025D40F /* Calculator.swift in Sources */,
 				6111B066215AFDB20090CF58 /* AppDelegate.swift in Sources */,

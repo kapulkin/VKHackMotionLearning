@@ -8,6 +8,7 @@
 
 import UIKit
 import MobileCoreServices
+import ARKit
 
 class ChooseImgVC: UIViewController {
   
@@ -39,12 +40,26 @@ class ChooseImgVC: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
   }
+
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
+    guard ARWorldTrackingConfiguration.supportsFrameSemantics(ARConfiguration.FrameSemantics.personSegmentationWithDepth)
+        else {
+            openBlockVC()
+            return
+    }
     guard !isAppeared else {return}
     isAppeared.toggle()
     AttachmentHandler.shared.showAttachmentActionSheet(vc: self)
   }
+    
+    
+      private func openBlockVC() {
+             guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "BlockVC") as? BlockVC else {
+                 return
+             }
+             UIApplication.shared.keyWindow?.rootViewController = vc
+         }
 }
 extension ChooseImgVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
